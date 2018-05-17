@@ -5,10 +5,10 @@ class Vector2D
 {
 
 public:
-    Vector2D(){
+    Vector3D(){
         float x, y, z;
     }
-	Vector2D(float x, float y, float z){
+	Vector3D(float x, float y, float z){
 		x_x=x;
 		y_y=y;
     z_z=z;
@@ -35,39 +35,39 @@ public:
       this->z_z = z;
   }
 //сумма двух векторов
-	Vector2D operator+ (const Vector2D& v2){
+	Vector3D operator+ (const Vector3D& v2){
 	    float a, b, c;
       a = this->getX() + v2.x_x;
 	    b = this->getY() + v2.y_y;
       c = this->getZ() + v2.z_z;
-	    return Vector2D(a, b, c);
+	    return Vector3D(a, b, c);
 	}
   
 //разница двух векторов
-  Vector2D operator- (const Vector2D& v2){
+  Vector3D operator- (const Vector3D& v2){
 	    float a, b, c;
       a = this->getX() - v2.x_x;
 	    b = this->getY() - v2.y_y;
       c = this->getZ() - v2.z_z;
-	    return Vector2D(a, b, c);
+	    return Vector3D(a, b, c);
 	}
   
   //умножение на константу vector*a
-	Vector2D operator* (const int a){
+	Vector3D operator* (const int a){
 	    float x = (this->getX()) * a;
 	    float y = (this->getY()) * a;
       float z = (this->getZ()) * a;
-	    return Vector2D(x, y, z);
+	    return Vector3D(x, y, z);
 	}
 
 //произведение векторов
-  float operator* (const Vector2D& v2){
+  float operator* (const Vector3D& v2){
 	    float x = (this->getX()) * v2.x_x;
 	    float y = (this->getY()) * v2.y_y;
       float z = (this->getZ()) * v2.z_z;
 	    return (x + y + z);
 	}
-	friend ostream& operator<<(ostream& os, const Vector2D& v);
+	friend ostream& operator<<(ostream& os, const Vector3D& v);
 
 private:
 	float x_x, y_y, z_z;
@@ -75,13 +75,13 @@ private:
 
 };
 //вывод вектора в формате (1;1;1)
-ostream& operator<<(ostream& os, const Vector2D& v){
+ostream& operator<<(ostream& os, const Vector3D& v){
 	os<<"(" << v.getX() <<"; "<< v.getY()<<"; "<< v.getZ()<<")";
 	return os;
 }
 
 //чтение вектора
-istream& operator>>(istream &is, Vector2D &v){
+istream& operator>>(istream &is, Vector3D &v){
     int a, b, c;
     is>> a >> b>>c;
     v.setX(a);
@@ -91,9 +91,9 @@ istream& operator>>(istream &is, Vector2D &v){
 }
 
 //умножение на константу a*vector
-Vector2D operator* (int a, Vector2D& v){
+Vector3D operator* (int a, Vector3D& v){
     float x = a * v.getX();
     float y = a * v.getY();
     float z = a * v.getZ();
-    return Vector2D(x, y, z);
+    return Vector3D(x, y, z);
 }
