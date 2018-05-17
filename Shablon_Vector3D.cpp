@@ -2,14 +2,14 @@
 using namespace std;
 
 template<typename T>
-class Vector2D
+class Vecto3D
 {
 
 public:
-    Vector2D(){
+    Vector3D(){
         T x, y, z;
     }
-	Vector2D(T x, T y, T z){
+	Vector3D(T x, T y, T z){
 		x_x=x;
 		y_y=y;
     z_z=z;
@@ -36,40 +36,40 @@ public:
       this->z_z = z;
   }
 //сумма двух векторов
-	Vector2D operator+ (const Vector2D& v2){
+	Vector3D operator+ (const Vector3D& v2){
 	    T a, b, c;
       a = this->getX() + v2.x_x;
 	    b = this->getY() + v2.y_y;
       c = this->getZ() + v2.z_z;
-	    return Vector2D(a, b, c);
+	    return Vector3D(a, b, c);
 	}
   
 //разница двух векторов
-  Vector2D operator- (const Vector2D& v2){
+  Vector3D operator- (const Vector3D& v2){
 	    T a, b, c;
       a = this->getX() - v2.x_x;
 	    b = this->getY() - v2.y_y;
       c = this->getZ() - v2.z_z;
-	    return Vector2D(a, b, c);
+	    return Vector3D(a, b, c);
 	}
   
   //умножение на константу vector*a
-	Vector2D operator* (const T a){
+	Vector3D operator* (const T a){
 	    T x = (this->getX()) * a;
 	    T y = (this->getY()) * a;
       T z = (this->getZ()) * a;
-	    return Vector2D(x, y, z);
+	    return Vector3D(x, y, z);
 	}
 
 //произведение векторов
-  T operator* (const Vector2D& v2){
+  T operator* (const Vector3D& v2){
 	    T x = (this->getX()) * v2.x_x;
 	    T y = (this->getY()) * v2.y_y;
       T z = (this->getZ()) * v2.z_z;
 	    return (x + y + z);
 	}
   template<typename X>
-	friend ostream& operator<<(ostream& os, const Vector2D<T>& v);
+	friend ostream& operator<<(ostream& os, const Vector3D<T>& v);
 
 private:
 	T x_x, y_y, z_z;
@@ -78,14 +78,14 @@ private:
 };
 //вывод вектора в формате (1;1;1)
 template<typename T>
-ostream& operator<<(ostream& os, const Vector2D<T>& v){
+ostream& operator<<(ostream& os, const Vector3D<T>& v){
 	os<<"(" << v.getX() <<"; "<< v.getY()<<"; "<< v.getZ()<<")";
 	return os;
 }
 
 //чтение вектора
 template<typename T>
-istream& operator>>(istream &is, Vector2D<T> &v){
+istream& operator>>(istream &is, Vector3D<T> &v){
     T a, b, c;
     is>> a >> b>>c;
     v.setX(a);
@@ -96,9 +96,9 @@ istream& operator>>(istream &is, Vector2D<T> &v){
 
 //умножение на константу a*vector
 template<typename T>
-Vector2D operator* (int a, Vector2D<T>& v){
+Vector3D operator* (int a, Vector3D<T>& v){
     T x = a * v.getX();
     T y = a * v.getY();
     T z = a * v.getZ();
-    return Vector2D(x, y, z);
+    return Vector3D(x, y, z);
 }
