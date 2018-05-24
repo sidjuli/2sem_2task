@@ -2,7 +2,7 @@
 using namespace std;
 
 template<typename T>
-class Vecto3D
+class Vector3D
 {
 
 public:
