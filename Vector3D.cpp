@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-class Vector2D
+class Vector3D
 {
 
 public:
