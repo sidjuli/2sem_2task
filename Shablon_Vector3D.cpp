@@ -43,7 +43,7 @@ public:
       c = this->getZ() + v2.z_z;
 	    return Vector3D(a, b, c);
 	}
-  
+
 //разница двух векторов
   Vector3D operator- (const Vector3D& v2){
 	    T a, b, c;
@@ -52,7 +52,7 @@ public:
       c = this->getZ() - v2.z_z;
 	    return Vector3D(a, b, c);
 	}
-  
+
   //умножение на константу vector*a
 	Vector3D operator* (const T a){
 	    T x = (this->getX()) * a;
@@ -68,8 +68,17 @@ public:
       T z = (this->getZ()) * v2.z_z;
 	    return (x + y + z);
 	}
+
+  friend T operator* (int a, Vector3D& v){
+    T x = a * v.getX();
+    T y = a * v.getY();
+    T z = a * v.getZ();
+    return Vector3D(x, y, z);
+}
+
   template<typename X>
 	friend ostream& operator<<(ostream& os, const Vector3D<T>& v);
+
 
 private:
 	T x_x, y_y, z_z;
@@ -92,13 +101,4 @@ istream& operator>>(istream &is, Vector3D<T> &v){
     v.setY(b);
     v.setZ(c);
     return is;
-}
-
-//умножение на константу a*vector
-template<typename T>
-Vector3D operator* (int a, Vector3D<T>& v){
-    T x = a * v.getX();
-    T y = a * v.getY();
-    T z = a * v.getZ();
-    return Vector3D(x, y, z);
 }
